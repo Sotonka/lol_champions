@@ -1,20 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lol_champions/common/app_colors.dart';
+import 'package:lol_champions/feature/presentation/bloc/champions_list_cubit/champions_list_cubit.dart';
+import 'package:lol_champions/feature/presentation/pages/champions_screen.dart';
+import 'package:lol_champions/locator_service.dart' as di;
+import 'locator_service.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await di.init();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Container(),
-    );
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider<ChampionCubit>(
+              create: (context) => sl<ChampionCubit>()..loadChampion()),
+        ],
+        child: MaterialApp(
+          theme: ThemeData.dark().copyWith(
+            backgroundColor: AppColors.mainColor,
+            scaffoldBackgroundColor: AppColors.mainAccent,
+          ),
+          home: HomePage(),
+        ));
   }
 }

@@ -16,7 +16,7 @@ class ChampionCubit extends Cubit<ChampionState> {
   //
   ChampionCubit({required this.getChampions}) : super(ChampionEmpty());
 
-  void loadWeather() async {
+  void loadChampion() async {
     if (state is ChampionLoading) return;
 
     final currentState = state;

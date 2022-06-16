@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:lol_champions/core/error/exception.dart';
 import 'package:lol_champions/feature/data/models/champion_model.dart';
+import 'package:lol_champions/utilities/constants.dart';
 
 abstract class ChampionRemoteDataSource {
   Future<List<ChampionModel>> getAllChampions();
@@ -13,7 +14,8 @@ class ChampionRemoteDataSourceImpl implements ChampionRemoteDataSource {
   ChampionRemoteDataSourceImpl({required this.client});
 
   @override
-  Future<List<ChampionModel>> getAllChampions() => _getChampionFromUrl('');
+  Future<List<ChampionModel>> getAllChampions() =>
+      _getChampionFromUrl('${Constants.PATH}');
 
   Future<List<ChampionModel>> _getChampionFromUrl(String url) async {
     // print(url);

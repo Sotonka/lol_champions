@@ -4,14 +4,14 @@ import 'package:lol_champions/core/error/exception.dart';
 import 'package:lol_champions/feature/data/models/champion_model.dart';
 
 abstract class ChampionRemoteDataSource {
-  Future<List<ChampionModel>> GetAllChampions();
+  Future<List<ChampionModel>> getAllChampions();
 }
 
 class ChampionRemoteDataSourceImpl implements ChampionRemoteDataSource {
   late final http.Client client;
 
   @override
-  Future<List<ChampionModel>> GetAllChampions() => _getChampionFromUrl('');
+  Future<List<ChampionModel>> getAllChampions() => _getChampionFromUrl('');
 
   Future<List<ChampionModel>> _getChampionFromUrl(String url) async {
     // print(url);

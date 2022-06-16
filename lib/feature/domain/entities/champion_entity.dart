@@ -5,7 +5,7 @@ class ChampionEntity extends Equatable {
   final String name;
   final String title;
   final ImageEntity image;
-  final TagsEntity tags;
+  final List<String> tags;
 
   const ChampionEntity({
     required this.id,
@@ -30,13 +30,5 @@ class ImageEntity {
 
   const ImageEntity({
     required this.full,
-  });
-}
-
-class TagsEntity {
-  final List<String> tags;
-
-  const TagsEntity({
-    required this.tags,
   });
 }

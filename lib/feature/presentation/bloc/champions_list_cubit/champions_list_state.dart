@@ -19,7 +19,7 @@ class ChampionLoading extends ChampionState {
   final List<ChampionEntity> oChampionsList;
   const ChampionLoading(this.oChampionsList);
   @override
-  List<Object?> get props => [this.oChampionsList];
+  List<Object?> get props => [oChampionsList];
 }
 
 //

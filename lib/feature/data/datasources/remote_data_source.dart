@@ -8,7 +8,9 @@ abstract class ChampionRemoteDataSource {
 }
 
 class ChampionRemoteDataSourceImpl implements ChampionRemoteDataSource {
-  late final http.Client client;
+  final http.Client client;
+
+  ChampionRemoteDataSourceImpl({required this.client});
 
   @override
   Future<List<ChampionModel>> getAllChampions() => _getChampionFromUrl('');

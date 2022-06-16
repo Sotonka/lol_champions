@@ -16,18 +16,20 @@ class ChampionEmpty extends ChampionState {
 
 //
 class ChampionLoading extends ChampionState {
+  final List<ChampionEntity> oChampionsList;
+  const ChampionLoading(this.oChampionsList);
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [this.oChampionsList];
 }
 
 //
 class ChampionLoaded extends ChampionState {
-  final ChampionEntity champion;
+  final List<ChampionEntity> championsList;
 
-  const ChampionLoaded(this.champion);
+  const ChampionLoaded(this.championsList);
 
   @override
-  List<Object?> get props => [champion];
+  List<Object?> get props => [championsList];
 }
 
 //

@@ -48,9 +48,10 @@ class ChampionRemoteDataSourceImpl implements ChampionRemoteDataSource {
 
   @override
   Future<List<ChampionModel>> getAllChampions(int count, String type) =>
-      _getChampionFromUrl();
+      _getChampionFromUrl(count, type);
 
-  Future<List<ChampionModel>> _getChampionFromUrl() async {
+  Future<List<ChampionModel>> _getChampionFromUrl(
+      int count, String type) async {
     final champions =
         json.decode(await rootBundle.loadString('lib/test/champions.json'));
 
@@ -59,7 +60,7 @@ class ChampionRemoteDataSourceImpl implements ChampionRemoteDataSource {
     champions['data'].forEach((k, v) => list.add(v));
 
     //var paginationList = list.getRange();
-    List<dynamic> paginationList = list.skip(0).take(28).toList();
+    List<dynamic> paginationList = list.skip(count - 32).take(32).toList();
     return (paginationList)
         .map((champion) => ChampionModel.fromJson(champion))
         .toList();

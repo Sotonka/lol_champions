@@ -17,7 +17,10 @@ class ChampionEmpty extends ChampionState {
 //
 class ChampionLoading extends ChampionState {
   final List<ChampionEntity> oChampionsList;
-  const ChampionLoading(this.oChampionsList);
+  final bool isFirstFetch;
+
+  const ChampionLoading(this.oChampionsList, {this.isFirstFetch = false});
+
   @override
   List<Object?> get props => [oChampionsList];
 }

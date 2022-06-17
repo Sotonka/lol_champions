@@ -17,9 +17,10 @@ class ChampionRepositoryImpl implements ChampionRepository {
   });
 
   @override
-  Future<Either<Failure, List<ChampionEntity>>> getAllChampions() async {
+  Future<Either<Failure, List<ChampionEntity>>> getAllChampions(
+      int count, String type) async {
     return await _getChampions(() {
-      return remoteDataSource.getAllChampions();
+      return remoteDataSource.getAllChampions(count, type);
     });
   }
 

@@ -5,30 +5,23 @@ import 'package:lol_champions/core/usecases/usecase.dart';
 import 'package:lol_champions/feature/domain/entities/champion_entity.dart';
 import 'package:lol_champions/feature/domain/repositories/champion_repository.dart';
 
-class GetAllChampions extends UseCaseNoP<List<ChampionEntity>> {
+class GetAllChampions extends UseCase<List<ChampionEntity>, ChampionParams> {
   final ChampionRepository championRepository;
 
   GetAllChampions(this.championRepository);
 
-  /* @override
-  Future<Either<Failure, List<ChampionEntity>>> call(
-      PagePersonParams params) async {
-    return await personRepository.getAllPersons(params.page);
-  } */
-
   @override
-  Future<Either<Failure, List<ChampionEntity>>> call() async {
-    return await championRepository.getAllChampions();
+  Future<Either<Failure, List<ChampionEntity>>> call(
+      ChampionParams params) async {
+    return await championRepository.getAllChampions(params.count, params.type);
   }
 }
 
-/* 
-ЕСЛИ НУЖНА БУДЕТ ПАГИНАЦИЯ/ ПРОГРУЗКА СКРОЛЛОМ
-class PageChampionParams extends Equatable {
-  final int page;
-  const PageChampionParams({required this.page});
+class ChampionParams extends Equatable {
+  final int count;
+  final String type;
+  const ChampionParams({required this.count, required this.type});
 
   @override
-  List<Object?> get props => [page];
+  List<Object?> get props => [count, type];
 }
- */

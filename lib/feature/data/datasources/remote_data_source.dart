@@ -7,7 +7,7 @@ import 'package:lol_champions/feature/data/models/champion_model.dart';
 import 'package:lol_champions/utilities/constants.dart';
 
 /* abstract class ChampionRemoteDataSource {
-  Future<List<ChampionModel>> getAllChampions();
+  Future<List<ChampionModel>> getAllChampions(int count, String type);
 }
 
 class ChampionRemoteDataSourceImpl implements ChampionRemoteDataSource {
@@ -16,7 +16,7 @@ class ChampionRemoteDataSourceImpl implements ChampionRemoteDataSource {
   ChampionRemoteDataSourceImpl({required this.client});
 
   @override
-  Future<List<ChampionModel>> getAllChampions() =>
+  Future<List<ChampionModel>> getAllChampions(int count, String type) =>
       _getChampionFromUrl('${Constants.PATH}');
 
   Future<List<ChampionModel>> _getChampionFromUrl(String url) async {
@@ -38,7 +38,7 @@ class ChampionRemoteDataSourceImpl implements ChampionRemoteDataSource {
 
 // тест на JSON файле
 abstract class ChampionRemoteDataSource {
-  Future<List<ChampionModel>> getAllChampions();
+  Future<List<ChampionModel>> getAllChampions(int count, String type);
 }
 
 class ChampionRemoteDataSourceImpl implements ChampionRemoteDataSource {
@@ -47,7 +47,8 @@ class ChampionRemoteDataSourceImpl implements ChampionRemoteDataSource {
   ChampionRemoteDataSourceImpl({required this.client});
 
   @override
-  Future<List<ChampionModel>> getAllChampions() => _getChampionFromUrl();
+  Future<List<ChampionModel>> getAllChampions(int count, String type) =>
+      _getChampionFromUrl();
 
   Future<List<ChampionModel>> _getChampionFromUrl() async {
     final champions =

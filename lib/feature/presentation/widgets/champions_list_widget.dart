@@ -7,6 +7,8 @@ import 'package:lol_champions/feature/presentation/bloc/champions_list_cubit/cha
 class ChampionsList extends StatelessWidget {
   const ChampionsList({Key? key}) : super(key: key);
 
+// TODO SCROLL CONTROLLER
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ChampionCubit, ChampionState>(builder: (context, state) {

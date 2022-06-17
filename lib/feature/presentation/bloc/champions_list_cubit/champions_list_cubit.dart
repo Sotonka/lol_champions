@@ -16,6 +16,8 @@ class ChampionCubit extends Cubit<ChampionState> {
   //
   ChampionCubit({required this.getChampions}) : super(ChampionEmpty());
 
+  int count = 28;
+
   void loadChampion() async {
     if (state is ChampionLoading) return;
 
@@ -28,11 +30,13 @@ class ChampionCubit extends Cubit<ChampionState> {
     }
     emit(ChampionLoading(oChampion));
 
-    final failureOrChampion = await getChampions();
+    final failureOrChampion =
+        await getChampions(ChampionParams(count: count, type: ''));
 
     failureOrChampion.fold(
         (error) => emit(ChampionError(message: _mapFailureToMessage(error))),
         (result) {
+      count += 28;
       final champions = (state as ChampionLoading).oChampionsList;
 
       champions.addAll(result);

@@ -22,8 +22,11 @@ class ChampionsList extends StatelessWidget {
         List<Widget> child = [];
         champions.forEach((champion) {
           String picName = champion.image.full;
-          child.add(Image.network(
-              'http://ddragon.leagueoflegends.com/cdn/12.11.1/img/champion/${picName}'));
+          child.add(Container(
+            child: Image.network(
+                'http://ddragon.leagueoflegends.com/cdn/12.11.1/img/champion/${picName}'),
+            padding: EdgeInsets.all(4.0),
+          ));
         });
         return child;
       }

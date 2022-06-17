@@ -17,16 +17,20 @@ class ChampionsList extends StatelessWidget {
       } else if (state is ChampionLoaded) {
         champions = state.championsList;
       }
-      return ListView.separated(
-        itemBuilder: (context, index) {
-          return Text('${champions[index]}');
-        },
-        separatorBuilder: (context, index) {
-          return Divider(
-            color: Colors.grey[400],
-          );
-        },
-        itemCount: champions.length,
+
+      List<Widget> getList() {
+        List<Widget> child = [];
+        champions.forEach((champion) {
+          String picName = champion.image.full;
+          child.add(Image.network(
+              'http://ddragon.leagueoflegends.com/cdn/12.11.1/img/champion/${picName}'));
+        });
+        return child;
+      }
+
+      return GridView.count(
+        crossAxisCount: 4,
+        children: getList(),
       );
     });
   }

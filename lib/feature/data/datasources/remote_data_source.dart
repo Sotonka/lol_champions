@@ -54,8 +54,12 @@ class ChampionRemoteDataSourceImpl implements ChampionRemoteDataSource {
         json.decode(await rootBundle.loadString('lib/test/champions.json'));
 
     var list = [];
+
     champions['data'].forEach((k, v) => list.add(v));
-    return (list as List)
+
+    //var paginationList = list.getRange();
+    List<dynamic> paginationList = list.skip(0).take(28).toList();
+    return (paginationList)
         .map((champion) => ChampionModel.fromJson(champion))
         .toList();
   }

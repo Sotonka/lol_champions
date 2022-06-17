@@ -34,6 +34,7 @@ class ChampionCubit extends Cubit<ChampionState> {
         (error) => emit(ChampionError(message: _mapFailureToMessage(error))),
         (result) {
       final champions = (state as ChampionLoading).oChampionsList;
+
       champions.addAll(result);
       emit(ChampionLoaded(champions));
     });

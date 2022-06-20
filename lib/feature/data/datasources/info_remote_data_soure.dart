@@ -7,7 +7,7 @@ import 'package:lol_champions/feature/domain/usecases/get_champion_info.dart';
 import 'package:lol_champions/utilities/constants.dart';
 
 abstract class ChampionInfoRemoteDataSource {
-  Future<ChampionInfoModel> GetChampionInfo(String name);
+  Future<ChampionInfoModel> getChampionInfo(String name);
 }
 
 class ChampionInfoRemoteDataSourceImpl implements ChampionInfoRemoteDataSource {
@@ -16,7 +16,7 @@ class ChampionInfoRemoteDataSourceImpl implements ChampionInfoRemoteDataSource {
   ChampionInfoRemoteDataSourceImpl({required this.client});
 
   @override
-  Future<ChampionInfoModel> GetChampionInfo(String name) =>
+  Future<ChampionInfoModel> getChampionInfo(String name) =>
       _getChampionFromUrl('${Constants.PATH}', name);
 
   Future<ChampionInfoModel> _getChampionFromUrl(String url, String name) async {

@@ -10,16 +10,32 @@ import '../bloc/champion_info_cubit/champion_info_cubit.dart';
 import '../bloc/champion_info_cubit/champion_info_state.dart';
 
 class ChampionInfo extends StatelessWidget {
-  final scrollController = ScrollController();
-  ChampionInfo({Key? key}) : super(key: key);
+  final String championName;
+  const ChampionInfo({super.key, required this.championName});
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ChampionInfoCubit, ChampionInfoState>(
         builder: (context, state) {
-      late ChampionInfoEntity champion;
-      bool isLoading = false;
-
+      /*      ChampionInfoEntity champion = ChampionInfoEntity(
+          id: '',
+          name: '',
+          title: '',
+          image: ImageEntity(full: 'full', sprite: 'sprite', group: 'group'),
+          tags: [],
+          skins: [],
+          lore: 'lore',
+          allytips: [],
+          enemytips: [],
+          partype: 'partype',
+          info: InfoEntity(attack: 1, defense: 1, magic: 1, difficulty: 1),
+          spells: [],
+          passive: PassiveEntity(
+              name: 'name',
+              description: 'description',
+              image:
+                  ImageEntity(full: 'full', sprite: 'sprite', group: 'group'))); */
+      ChampionInfoEntity? champion = null;
       if (state is ChampionInfoLoading) {
         return _loadingIndicator();
       } else if (state is ChampionInfoLoaded) {
@@ -30,8 +46,11 @@ class ChampionInfo extends StatelessWidget {
           style: const TextStyle(color: Colors.white, fontSize: 25),
         );
       }
-
-      return Text(champion.id);
+      if (champion != null) {
+        return Text(champion.id);
+      } else {
+        return _loadingIndicator();
+      }
     });
   }
 

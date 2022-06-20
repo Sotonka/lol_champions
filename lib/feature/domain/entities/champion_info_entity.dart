@@ -62,7 +62,7 @@ class ImageEntity {
 }
 
 class SkinEntity {
-  final int id;
+  final String id;
   final int number;
   final String name;
   final bool chromas;
@@ -77,13 +77,13 @@ class SkinEntity {
 
 class InfoEntity {
   final int attack;
-  final int defence;
+  final int defense;
   final int magic;
   final int difficulty;
 
   const InfoEntity({
     required this.attack,
-    required this.defence,
+    required this.defense,
     required this.magic,
     required this.difficulty,
   });

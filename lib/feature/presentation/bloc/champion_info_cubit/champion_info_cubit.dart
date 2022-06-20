@@ -15,14 +15,14 @@ class ChampionInfoCubit extends Cubit<ChampionInfoState> {
   //
   ChampionInfoCubit({required this.getChampion}) : super(ChampionInfoEmpty());
 
-  void loadChampion() async {
+  void loadChampion(String name) async {
     if (state is ChampionInfoLoading) return;
 
     final currentState = state;
 
     if (currentState is ChampionInfoLoaded) {}
 
-    final failureOrChampion = await getChampion(ChampionParams(name: ''));
+    final failureOrChampion = await getChampion(ChampionParams(name: name));
 
     failureOrChampion.fold(
         (error) =>

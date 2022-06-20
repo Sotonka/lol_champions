@@ -18,12 +18,13 @@ class ChampionInfoRemoteDataSourceImpl implements ChampionInfoRemoteDataSource {
       _getChampionFromUrl('${Constants.INFO_PATH}/', name);
 
   Future<ChampionInfoModel> _getChampionFromUrl(String url, String name) async {
-    final response = await client.get(Uri.parse('$url.json'),
+    final response = await client.get(Uri.parse('$url$name.json'),
         headers: {'Content-Type': 'application/json'});
+
     if (response.statusCode == 200) {
       final championInfo = json.decode(response.body);
 
-      return championInfo['data'][name];
+      return ChampionInfoModel.fromJson(championInfo['data'][name]);
     } else {
       throw ServerException();
     }

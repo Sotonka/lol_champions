@@ -71,7 +71,7 @@ class ChampionsList extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          ChampionDetailScreen(champion: champions[index].name),
+                          ChampionDetailScreen(champion: champions[index].id),
                     ));
               },
               child: Container(

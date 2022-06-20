@@ -39,17 +39,19 @@ class ChampionInfoModel extends ChampionInfoEntity {
       image: json['image'] != null ? ImageModel.fromJson(json['image']) : null,
       tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
       partype: json['partype'] as String,
-      skins: (json['skins'] as List<SkinModel>)
-          .map((e) => e as SkinModel)
+      skins: (json['skins'] as List<dynamic>)
+          .map((e) => SkinModel.fromJson(e))
           .toList(),
       lore: json['lore'] as String,
-      allytips: json['allytips'] as String,
-      enemytips: json['enemytips'] as String,
-      info: json['info'] as InfoModel,
-      spells: (json['spells'] as List<SpellModel>)
-          .map((e) => e as SpellModel)
+      allytips:
+          (json['allytips'] as List<dynamic>).map((e) => e as String).toList(),
+      enemytips:
+          (json['enemytips'] as List<dynamic>).map((e) => e as String).toList(),
+      info: InfoModel.fromJson(json['info']),
+      spells: (json['spells'] as List<dynamic>)
+          .map((e) => SpellModel.fromJson(e))
           .toList(),
-      passive: json['passive'] as PassiveModel,
+      passive: PassiveModel.fromJson(json['passive']),
     );
   }
 
@@ -115,7 +117,7 @@ class SkinModel extends SkinEntity {
 
   factory SkinModel.fromJson(Map<String, dynamic> json) {
     return SkinModel(
-      id: json['id'] as int,
+      id: json['id'] as String,
       number: json['num'] as int,
       name: json['name'] as String,
       chromas: json['chromas'] as bool,
@@ -135,20 +137,20 @@ class SkinModel extends SkinEntity {
 class InfoModel extends InfoEntity {
   InfoModel({
     attack,
-    defence,
+    defense,
     magic,
     difficulty,
   }) : super(
           attack: attack,
-          defence: defence,
+          defense: defense,
           magic: magic,
           difficulty: difficulty,
         );
 
-  factory InfoModel.fromJson(Map<int, dynamic> json) {
+  factory InfoModel.fromJson(Map<String, dynamic> json) {
     return InfoModel(
       attack: json['attack'] as int,
-      defence: json['defence'] as int,
+      defense: json['defense'] as int,
       magic: json['magic'] as int,
       difficulty: json['difficulty'] as int,
     );
@@ -157,7 +159,7 @@ class InfoModel extends InfoEntity {
   Map<String, dynamic> toJson() {
     return {
       'attack': attack,
-      'defence': defence,
+      'defense': defense,
       'magic': magic,
       'difficulty': difficulty,
     };
@@ -189,7 +191,7 @@ class SpellModel extends SpellEntity {
       name: json['name'] as String,
       description: json['description'] as String,
       cooldownBurn: json['cooldownBurn'] as String,
-      manaBurn: json['manaBurn'] as String,
+      manaBurn: json['costBurn'] as String,
       rangeBurn: json['rangeBurn'] as String,
       image: json['image'] != null ? ImageModel.fromJson(json['image']) : null,
     );
@@ -201,7 +203,7 @@ class SpellModel extends SpellEntity {
       'name': name,
       'description': description,
       'cooldownBurn': cooldownBurn,
-      'manaBurn': manaBurn,
+      'costBurn': manaBurn,
       'rangeBurn': rangeBurn,
       'image': image,
     };

@@ -9,5 +9,5 @@ abstract class ChampionRepository {
 }
 
 abstract class ChampionInfoRepository {
-  Future<Either<Failure, ChampionInfoEntity>> getChampionInfo(String type);
+  Future<Either<Failure, ChampionInfoEntity>> getChampionInfo(String name);
 }

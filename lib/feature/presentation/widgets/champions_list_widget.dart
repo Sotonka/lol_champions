@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lol_champions/common/app_colors.dart';
 import 'package:lol_champions/feature/domain/entities/champion_entity.dart';
 import 'package:lol_champions/feature/presentation/bloc/champions_list_cubit/champions_list_cubit.dart';
 import 'package:lol_champions/feature/presentation/bloc/champions_list_cubit/champions_list_state.dart';
 import 'dart:async';
-
 import 'package:lol_champions/feature/presentation/pages/champions_detail_screen.dart';
+import 'package:lol_champions/feature/presentation/widgets/image_widget.dart';
+import 'package:lol_champions/feature/presentation/widgets/loading_indicator.dart';
+import 'package:lol_champions/utilities/constants.dart';
 
 class ChampionsList extends StatelessWidget {
   final scrollController = ScrollController();
@@ -31,7 +34,7 @@ class ChampionsList extends StatelessWidget {
       bool isLoading = false;
 
       if (state is ChampionLoading && state.isFirstFetch) {
-        return _loadingIndicator();
+        return LoadingIndicator();
       } else if (state is ChampionLoading) {
         champions = state.oChampionsList;
         isLoading = true;
@@ -42,19 +45,6 @@ class ChampionsList extends StatelessWidget {
           state.message,
           style: const TextStyle(color: Colors.white, fontSize: 25),
         );
-      }
-
-      List<Widget> getList() {
-        List<Widget> child = [];
-        champions.forEach((champion) {
-          String picName = champion.image.full;
-          child.add(Container(
-            child: Image.network(
-                'http://ddragon.leagueoflegends.com/cdn/12.11.1/img/champion/${picName}'),
-            padding: EdgeInsets.all(4.0),
-          ));
-        });
-        return child;
       }
 
       return GridView.builder(
@@ -74,30 +64,20 @@ class ChampionsList extends StatelessWidget {
                           ChampionDetailScreen(champion: champions[index].id),
                     ));
               },
-              child: Container(
-                child: Image.network(
-                    'http://ddragon.leagueoflegends.com/cdn/12.11.1/img/champion/${picName}'),
-                padding: EdgeInsets.all(4.0),
-              ),
+              child: ChampionImage(
+                  height: 48.0,
+                  width: 48.0,
+                  imageUrl: Constants.IMG_PATH + picName),
             );
           } else {
             Timer(Duration(milliseconds: 30), () {
               /* scrollController
                   .jumpTo(scrollController.position.maxScrollExtent); */
             });
-            return _loadingIndicator();
+            return LoadingIndicator();
           }
         },
       );
     });
-  }
-
-  Widget _loadingIndicator() {
-    return const Padding(
-      padding: EdgeInsets.all(8.0),
-      child: Center(
-        child: CircularProgressIndicator(),
-      ),
-    );
   }
 }

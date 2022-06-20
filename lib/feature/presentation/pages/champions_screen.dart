@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lol_champions/common/app_colors.dart';
 import 'package:lol_champions/feature/presentation/widgets/champions_list_widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -8,7 +9,39 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('menu here'),
+        elevation: 0,
+        backgroundColor: AppColors.mainColor,
+        title: Row(
+          children: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.star,
+                color: Colors.white,
+                size: 12,
+              ),
+              iconSize: 12,
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.star,
+                color: Colors.white,
+                size: 12,
+              ),
+              iconSize: 12,
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.star,
+                color: Colors.white,
+                size: 12,
+              ),
+              iconSize: 12,
+            ),
+          ],
+        ),
         centerTitle: true,
         actions: [
           IconButton(

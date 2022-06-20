@@ -9,5 +9,8 @@ class Constants {
   // //champion/Aatrox.json
   // http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_0.jpg
   // http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Aatrox_0.jpg
-  static const String PATH_ICON = 'http://openweathermap.org/img/wn/';
+  static const String IMG_PATH =
+      'http://ddragon.leagueoflegends.com/cdn/12.11.1/img/champion/';
+  static const String FULL_IMG_PATH =
+      'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/';
 }

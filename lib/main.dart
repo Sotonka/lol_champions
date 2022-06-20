@@ -26,11 +26,9 @@ class MyApp extends StatelessWidget {
         ],
         child: MaterialApp(
           theme: ThemeData.dark().copyWith(
-            backgroundColor: AppColors.mainColor,
-            scaffoldBackgroundColor: AppColors.mainAccent,
+            scaffoldBackgroundColor: AppColors.mainColor,
           ),
           home: HomePage(),
-          //home: ChampionDetailScreen(champion: 'Aatrox'),
         ));
   }
 }

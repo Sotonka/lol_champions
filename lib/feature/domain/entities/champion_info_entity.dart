@@ -63,13 +63,13 @@ class ImageEntity {
 
 class SkinEntity {
   final int id;
-  final int num;
+  final int number;
   final String name;
   final bool chromas;
 
   const SkinEntity({
     required this.id,
-    required this.num,
+    required this.number,
     required this.name,
     required this.chromas,
   });

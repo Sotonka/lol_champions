@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lol_champions/feature/presentation/widgets/champion_info_widget.dart';
 
 class ChampionDetailScreen extends StatelessWidget {
   final String champion;
@@ -7,8 +8,6 @@ class ChampionDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text(champion),
-    );
+    return ChampionInfo();
   }
 }

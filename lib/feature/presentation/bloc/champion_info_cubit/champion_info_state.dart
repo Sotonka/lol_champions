@@ -1,42 +1,42 @@
 import 'package:equatable/equatable.dart';
 import 'package:lol_champions/feature/domain/entities/champion_info_entity.dart';
 
-abstract class ChampionState extends Equatable {
-  const ChampionState();
+abstract class ChampionInfoState extends Equatable {
+  const ChampionInfoState();
 
   @override
   List<Object?> get props => [];
 }
 
 //
-class ChampionEmpty extends ChampionState {
+class ChampionInfoEmpty extends ChampionInfoState {
   @override
   List<Object?> get props => [];
 }
 
 //
-class ChampionLoading extends ChampionState {
-  const ChampionLoading();
+class ChampionInfoLoading extends ChampionInfoState {
+  const ChampionInfoLoading();
 
   @override
   List<Object?> get props => [];
 }
 
 //
-class ChampionLoaded extends ChampionState {
+class ChampionInfoLoaded extends ChampionInfoState {
   final ChampionInfoEntity champion;
 
-  const ChampionLoaded(this.champion);
+  const ChampionInfoLoaded(this.champion);
 
   @override
   List<Object?> get props => [champion];
 }
 
 //
-class ChampionError extends ChampionState {
+class ChampionInfoError extends ChampionInfoState {
   final String message;
 
-  const ChampionError({required this.message});
+  const ChampionInfoError({required this.message});
 
   @override
   List<Object?> get props => [message];

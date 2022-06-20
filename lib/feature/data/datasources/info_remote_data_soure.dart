@@ -2,8 +2,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:lol_champions/core/error/exception.dart';
 import 'package:lol_champions/feature/data/models/champion_info_model.dart';
-import 'package:lol_champions/feature/data/models/champion_model.dart';
-import 'package:lol_champions/feature/domain/usecases/get_champion_info.dart';
 import 'package:lol_champions/utilities/constants.dart';
 
 abstract class ChampionInfoRemoteDataSource {
@@ -17,11 +15,11 @@ class ChampionInfoRemoteDataSourceImpl implements ChampionInfoRemoteDataSource {
 
   @override
   Future<ChampionInfoModel> getChampionInfo(String name) =>
-      _getChampionFromUrl('${Constants.PATH}', name);
+      _getChampionFromUrl('${Constants.INFO_PATH}/', name);
 
   Future<ChampionInfoModel> _getChampionFromUrl(String url, String name) async {
-    final response = await client
-        .get(Uri.parse(url), headers: {'Content-Type': 'application/json'});
+    final response = await client.get(Uri.parse('$url.json'),
+        headers: {'Content-Type': 'application/json'});
     if (response.statusCode == 200) {
       final championInfo = json.decode(response.body);
 

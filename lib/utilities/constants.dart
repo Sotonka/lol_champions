@@ -3,6 +3,8 @@
 class Constants {
   static const String PATH =
       'http://ddragon.leagueoflegends.com/cdn/12.11.1/data/en_US/champion.json';
+  static const String INFO_PATH =
+      'http://ddragon.leagueoflegends.com/cdn/12.11.1/data/en_US/champion';
   // /champion.json
   // //champion/Aatrox.json
   // http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_0.jpg

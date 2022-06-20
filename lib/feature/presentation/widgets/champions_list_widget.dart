@@ -5,6 +5,8 @@ import 'package:lol_champions/feature/presentation/bloc/champions_list_cubit/cha
 import 'package:lol_champions/feature/presentation/bloc/champions_list_cubit/champions_list_state.dart';
 import 'dart:async';
 
+import 'package:lol_champions/feature/presentation/pages/champions_detail_screen.dart';
+
 class ChampionsList extends StatelessWidget {
   final scrollController = ScrollController();
   ChampionsList({Key? key}) : super(key: key);
@@ -63,10 +65,20 @@ class ChampionsList extends StatelessWidget {
         itemBuilder: (context, index) {
           if (index < champions.length) {
             String picName = champions[index].image.full;
-            return Container(
-              child: Image.network(
-                  'http://ddragon.leagueoflegends.com/cdn/12.11.1/img/champion/${picName}'),
-              padding: EdgeInsets.all(4.0),
+            return GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          ChampionDetailScreen(champion: champions[index].name),
+                    ));
+              },
+              child: Container(
+                child: Image.network(
+                    'http://ddragon.leagueoflegends.com/cdn/12.11.1/img/champion/${picName}'),
+                padding: EdgeInsets.all(4.0),
+              ),
             );
           } else {
             Timer(Duration(milliseconds: 30), () {

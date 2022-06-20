@@ -21,9 +21,6 @@ class ChampionModel extends ChampionEntity {
       name: json['name'] as String,
       title: json['title'] as String,
       image: json['image'] != null ? ImageModel.fromJson(json['image']) : null,
-      /* image: json['image'] as String,
-      tags:
-          (json['tags'] as List<dynamic>).map((e) => e as String).toList(), */
       tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
     );
   }

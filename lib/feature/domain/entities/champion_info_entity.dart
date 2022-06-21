@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 
 class ChampionInfoEntity extends Equatable {
   final String id;
+  final String key;
   final String name;
   final String title;
   final ImageEntity image;
@@ -17,6 +18,7 @@ class ChampionInfoEntity extends Equatable {
 
   const ChampionInfoEntity({
     required this.id,
+    required this.key,
     required this.name,
     required this.title,
     required this.image,
@@ -34,6 +36,7 @@ class ChampionInfoEntity extends Equatable {
   @override
   List<Object?> get props => [
         id,
+        key,
         name,
         title,
         image,

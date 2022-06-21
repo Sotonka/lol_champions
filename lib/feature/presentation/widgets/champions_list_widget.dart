@@ -67,7 +67,7 @@ class ChampionsList extends StatelessWidget {
               child: ChampionImage(
                   height: 48.0,
                   width: 48.0,
-                  imageUrl: Constants.IMG_PATH + picName),
+                  imageUrl: Constants.IMG_PATH + 'champion/' + picName),
             );
           } else {
             Timer(Duration(milliseconds: 30), () {

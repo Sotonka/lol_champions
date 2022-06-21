@@ -3,6 +3,7 @@ import 'package:lol_champions/feature/domain/entities/champion_info_entity.dart'
 class ChampionInfoModel extends ChampionInfoEntity {
   const ChampionInfoModel({
     required id,
+    required key,
     required name,
     required title,
     required image,
@@ -17,6 +18,7 @@ class ChampionInfoModel extends ChampionInfoEntity {
     required passive,
   }) : super(
           id: id,
+          key: key,
           name: name,
           title: title,
           image: image,
@@ -34,6 +36,7 @@ class ChampionInfoModel extends ChampionInfoEntity {
   factory ChampionInfoModel.fromJson(Map<String, dynamic> json) {
     return ChampionInfoModel(
       id: json['id'] as String,
+      key: json['key'] as String,
       name: json['name'] as String,
       title: json['title'] as String,
       image: json['image'] != null ? ImageModel.fromJson(json['image']) : null,
@@ -58,6 +61,7 @@ class ChampionInfoModel extends ChampionInfoEntity {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
+      'key': key,
       'name': name,
       'title': title,
       'image': image,

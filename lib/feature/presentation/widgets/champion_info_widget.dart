@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lol_champions/feature/domain/entities/champion_info_entity.dart';
 import 'package:lol_champions/feature/presentation/widgets/champion_info/champion_info_second.dart';
+import 'package:lol_champions/feature/presentation/widgets/champion_info/champion_info_third.dart';
 import 'dart:async';
 import 'package:lol_champions/feature/presentation/widgets/loading_indicator.dart';
 import 'package:lol_champions/utilities/constants.dart';
@@ -79,6 +80,9 @@ class _ChampionInfoState extends State<ChampionInfo> {
                 ChampionInfoSecond(
                   champion: champion,
                 ),
+                ChampionInfoThird(
+                  champion: champion,
+                )
               ],
             ),
           ],

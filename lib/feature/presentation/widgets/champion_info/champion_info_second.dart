@@ -344,45 +344,5 @@ class ChampionInfoSecond extends StatelessWidget {
         ),
       ],
     );
-/*     return Column(
-      children: [
-        PageView(
-          controller: _controller,
-          scrollDirection: Axis.horizontal,
-          children: [
-            Scaffold(
-              backgroundColor: Colors.transparent,
-              body: Column(
-                children: [
-                  VideoApp(
-                      url:
-                          '${Constants.VIDEO_PATH + key}/ability_${key}_P1.webm'),
-                ],
-              ),
-            ),
-            Scaffold(
-              backgroundColor: Colors.transparent,
-              body: VideoApp(
-                  url: '${Constants.VIDEO_PATH + key}/ability_${key}_Q1.webm'),
-            ),
-            Scaffold(
-              backgroundColor: Colors.transparent,
-              body: VideoApp(
-                  url: '${Constants.VIDEO_PATH + key}/ability_${key}_W1.webm'),
-            ),
-
-          ],
-        ),
-       const Text(
-          'ABILITIES',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 48,
-            fontWeight: FontWeight.bold,
-          ),
-        ), 
-      ],
-    ); */
   }
 }

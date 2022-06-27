@@ -47,36 +47,145 @@ class ChampionsList extends StatelessWidget {
         );
       }
 
-      return GridView.builder(
-        controller: scrollController,
-        itemCount: champions.length + (isLoading ? 7 : 0),
-        gridDelegate:
-            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
-        itemBuilder: (context, index) {
-          if (index < champions.length) {
-            String picName = champions[index].image.full;
-            return GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          ChampionDetailScreen(champion: champions[index].id),
-                    ));
+      return Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
+            color: AppColors.mainColor,
+            height: MediaQuery.of(context).size.height * 0.15,
+            width: MediaQuery.of(context).size.width,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.only(left: 8, right: 8),
+                          child: const Text(
+                            'All',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.only(left: 8, right: 8),
+                          child: const Text(
+                            'Assassins',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.only(left: 8, right: 8),
+                          child: const Text(
+                            'Fighters',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.only(left: 8, right: 8),
+                          child: const Text(
+                            'Marksmen',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.only(left: 8, right: 8),
+                          child: const Text(
+                            'Mages',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.only(left: 8, right: 8),
+                          child: const Text(
+                            'Supports',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.only(left: 8, right: 8),
+                          child: const Text(
+                            'Tanks',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.search),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.85,
+            width: MediaQuery.of(context).size.width,
+            child: GridView.builder(
+              controller: scrollController,
+              itemCount: champions.length + (isLoading ? 7 : 0),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4),
+              itemBuilder: (context, index) {
+                if (index < champions.length) {
+                  String picName = champions[index].image.full;
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ChampionDetailScreen(
+                                champion: champions[index].id),
+                          ));
+                    },
+                    child: ChampionImage(
+                        height: 48.0,
+                        width: 48.0,
+                        imageUrl: Constants.IMG_PATH + 'champion/' + picName),
+                  );
+                } else {
+                  Timer(Duration(milliseconds: 30), () {
+                    /* scrollController
+                        .jumpTo(scrollController.position.maxScrollExtent); */
+                  });
+                  return LoadingIndicator();
+                }
               },
-              child: ChampionImage(
-                  height: 48.0,
-                  width: 48.0,
-                  imageUrl: Constants.IMG_PATH + 'champion/' + picName),
-            );
-          } else {
-            Timer(Duration(milliseconds: 30), () {
-              /* scrollController
-                  .jumpTo(scrollController.position.maxScrollExtent); */
-            });
-            return LoadingIndicator();
-          }
-        },
+            ),
+          ),
+        ],
       );
     });
   }

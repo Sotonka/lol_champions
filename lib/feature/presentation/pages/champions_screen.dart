@@ -8,40 +8,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      /*     appBar: AppBar(
         elevation: 0,
         backgroundColor: AppColors.mainColor,
-        title: Row(
-          children: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.star,
-                color: Colors.white,
-                size: 12,
-              ),
-              iconSize: 12,
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.star,
-                color: Colors.white,
-                size: 12,
-              ),
-              iconSize: 12,
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.star,
-                color: Colors.white,
-                size: 12,
-              ),
-              iconSize: 12,
-            ),
-          ],
-        ),
         centerTitle: true,
         actions: [
           IconButton(
@@ -50,7 +19,7 @@ class HomePage extends StatelessWidget {
             color: Colors.white,
           ),
         ],
-      ),
+      ), */
       body: ChampionsList(),
     );
   }

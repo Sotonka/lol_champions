@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
               create: (context) => sl<ChampionCubit>()..loadChampion()),
         ],
         child: MaterialApp(
+          debugShowCheckedModeBanner: false,
           theme: ThemeData.dark().copyWith(
             scaffoldBackgroundColor: AppColors.mainColor,
           ),

@@ -6,7 +6,7 @@
         <td>
       <ul>
       <li>Cubit</li>
-      <li>dio</li>
+      <li>Dio</li>
       <li>Clean Architecture</li>
       <li>DI</li>
 </ul> 
